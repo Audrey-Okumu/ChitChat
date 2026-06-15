@@ -4,14 +4,26 @@ import android.os.Bundle
 import androidx.activity.ComponentActivity
 import androidx.activity.compose.setContent
 import androidx.activity.enableEdgeToEdge
-import androidx.compose.foundation.layout.fillMaxSize
-import androidx.compose.foundation.layout.padding
-import androidx.compose.material3.Scaffold
-import androidx.compose.material3.Text
+import androidx.compose.foundation.BorderStroke
+import androidx.compose.foundation.background
+import androidx.compose.foundation.layout.*
+import androidx.compose.foundation.shape.CircleShape
+import androidx.compose.foundation.shape.RoundedCornerShape
+import androidx.compose.material3.*
 import androidx.compose.runtime.Composable
+import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
+import androidx.compose.ui.draw.clip
+import androidx.compose.ui.graphics.Color
+import androidx.compose.ui.text.font.FontWeight
 import androidx.compose.ui.tooling.preview.Preview
+import androidx.compose.ui.unit.dp
+import androidx.compose.ui.unit.sp
+import com.example.chitchat.screens.SplashScreen
 import com.example.chitchat.ui.theme.ChitChatTheme
+import com.example.chitchat.ui.theme.DarkBlue
+import com.example.chitchat.ui.theme.LightBlue
+import com.example.chitchat.ui.theme.Orange
 
 class MainActivity : ComponentActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
@@ -20,8 +32,7 @@ class MainActivity : ComponentActivity() {
         setContent {
             ChitChatTheme {
                 Scaffold(modifier = Modifier.fillMaxSize()) { innerPadding ->
-                    Greeting(
-                        name = "Android",
+                    MainScreen(
                         modifier = Modifier.padding(innerPadding),
                     )
                 }
@@ -29,19 +40,24 @@ class MainActivity : ComponentActivity() {
         }
     }
 }
-
 @Composable
-fun Greeting(name: String, modifier: Modifier = Modifier) {
-    Text(
-        text = "Hello $name!",
-        modifier = modifier
-    )
+fun MainScreen(modifier: Modifier = Modifier){
+    SplashScreen()
+}
+
+
+@Preview(showBackground = true)
+@Composable
+fun MainScreenPreview() {
+    ChitChatTheme {
+    MainScreen()
+    }
 }
 
 @Preview(showBackground = true)
 @Composable
-fun GreetingPreview() {
-    ChitChatTheme {
-        Greeting("Android")
+fun MainScreenPreviewDark() {
+    ChitChatTheme(darkTheme = true) {
+        MainScreen()
     }
 }
