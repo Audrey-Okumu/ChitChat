@@ -34,7 +34,11 @@ import com.example.chitchat.ui.theme.LightBlue
 import com.example.chitchat.ui.theme.Orange
 
 @Composable
-fun SplashScreen(modifier: Modifier = Modifier) {
+fun SplashScreen(
+    onLoginClick: () -> Unit,
+    onSignUpClick: () -> Unit,
+    modifier: Modifier = Modifier
+) {
     Surface(
         modifier = modifier
             .fillMaxSize()
@@ -122,7 +126,7 @@ fun SplashScreen(modifier: Modifier = Modifier) {
                 verticalArrangement = Arrangement.spacedBy(16.dp)
             ) {
                 Button(
-                    onClick = { /* TODO */ },
+                    onClick = onLoginClick,
                     modifier = Modifier
                         .fillMaxWidth()
                         .height(56.dp),
@@ -138,7 +142,7 @@ fun SplashScreen(modifier: Modifier = Modifier) {
                 }
 
                 OutlinedButton(
-                    onClick = { /* TODO */ },
+                    onClick = onSignUpClick,
                     modifier = Modifier
                         .fillMaxWidth()
                         .height(56.dp),
@@ -181,6 +185,6 @@ fun DotsDecoration(modifier: Modifier = Modifier) {
 @Composable
 fun SplashScreenPreview() {
     ChitChatTheme {
-        SplashScreen()
+        SplashScreen(onLoginClick = {}, onSignUpClick = {})
     }
 }
