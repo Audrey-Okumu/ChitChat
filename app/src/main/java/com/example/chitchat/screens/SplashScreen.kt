@@ -22,13 +22,13 @@ import androidx.compose.material3.Text
 import androidx.compose.runtime.Composable
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
-import androidx.compose.ui.draw.clip
 import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.text.font.FontWeight
 import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
 import com.example.chitchat.ui.theme.ChitChatTheme
+import androidx.compose.material3.MaterialTheme
 import com.example.chitchat.ui.theme.DarkBlue
 import com.example.chitchat.ui.theme.LightBlue
 import com.example.chitchat.ui.theme.Orange
@@ -41,9 +41,8 @@ fun SplashScreen(
 ) {
     Surface(
         modifier = modifier
-            .fillMaxSize()
-            .clip(RoundedCornerShape(14.dp)),
-        color = DarkBlue
+            .fillMaxSize(),
+        color = MaterialTheme.colorScheme.background
     ) {
         Box(modifier = Modifier.fillMaxSize()) {
             DotsDecoration(
@@ -62,7 +61,7 @@ fun SplashScreen(
                             .size(80.dp)
                             .align(Alignment.BottomStart)
                             .background(
-                                color = LightBlue,
+                                color = MaterialTheme.colorScheme.secondary,
                                 shape = RoundedCornerShape(
                                     topStart = 40.dp,
                                     topEnd = 40.dp,
@@ -76,7 +75,7 @@ fun SplashScreen(
                             .size(80.dp)
                             .align(Alignment.TopEnd)
                             .background(
-                                color = Orange,
+                                color = MaterialTheme.colorScheme.primary,
                                 shape = RoundedCornerShape(
                                     topStart = 40.dp,
                                     topEnd = 40.dp,
@@ -104,14 +103,14 @@ fun SplashScreen(
 
                 Text(
                     text = "ChitChat",
-                    color = Color.White,
+                    color = MaterialTheme.colorScheme.onBackground,
                     fontSize = 40.sp,
                     fontWeight = FontWeight.Bold
                 )
 
                 Text(
                     text = "Connect. Chat. Share.",
-                    color = Color.White.copy(alpha = 0.8f),
+                    color = MaterialTheme.colorScheme.onBackground.copy(alpha = 0.8f),
                     fontSize = 16.sp,
                     letterSpacing = 1.sp
                 )
@@ -130,12 +129,12 @@ fun SplashScreen(
                     modifier = Modifier
                         .fillMaxWidth()
                         .height(56.dp),
-                    colors = ButtonDefaults.buttonColors(containerColor = Orange),
+                    colors = ButtonDefaults.buttonColors(containerColor = MaterialTheme.colorScheme.primary),
                     shape = RoundedCornerShape(16.dp)
                 ) {
                     Text(
                         text = "Login",
-                        color = Color.White,
+                        color = MaterialTheme.colorScheme.onPrimary,
                         fontSize = 18.sp,
                         fontWeight = FontWeight.SemiBold
                     )
@@ -146,9 +145,9 @@ fun SplashScreen(
                     modifier = Modifier
                         .fillMaxWidth()
                         .height(56.dp),
-                    border = BorderStroke(1.dp, Color.White),
+                    border = BorderStroke(1.dp, MaterialTheme.colorScheme.onBackground),
                     shape = RoundedCornerShape(16.dp),
-                    colors = ButtonDefaults.outlinedButtonColors(contentColor = Color.White)
+                    colors = ButtonDefaults.outlinedButtonColors(contentColor = MaterialTheme.colorScheme.onBackground)
                 ) {
                     Text(
                         text = "Sign Up",
@@ -173,7 +172,10 @@ fun DotsDecoration(modifier: Modifier = Modifier) {
                     Box(
                         modifier = Modifier
                             .size(6.dp)
-                            .background(Color.White.copy(alpha = 0.2f), shape = CircleShape)
+                            .background(
+                                MaterialTheme.colorScheme.onBackground.copy(alpha = 0.2f), 
+                                shape = CircleShape
+                            )
                     )
                 }
             }
