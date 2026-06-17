@@ -29,7 +29,10 @@ fun NavGraph(
             LoginScreen()
         }
         composable<RegisterRoute> {
-            RegisterScreen()
+            RegisterScreen(
+                onBackClick = { navController.popBackStack() },
+                onLoginClick = { navController.navigate(LoginRoute) }
+            )
         }
     }
 }

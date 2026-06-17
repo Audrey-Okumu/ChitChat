@@ -12,7 +12,6 @@ import androidx.compose.ui.Modifier
 import androidx.compose.ui.tooling.preview.Preview
 import androidx.navigation.compose.rememberNavController
 import com.example.chitchat.navigation.NavGraph
-import com.example.chitchat.screens.SplashScreen
 import com.example.chitchat.ui.theme.ChitChatTheme
 
 class MainActivity : ComponentActivity() {
@@ -21,14 +20,27 @@ class MainActivity : ComponentActivity() {
         enableEdgeToEdge()
         setContent {
             ChitChatTheme {
-                val navController = rememberNavController()
-                Scaffold(modifier = Modifier.fillMaxSize()) { innerPadding ->
-                    NavGraph(
-                        navController = navController,
-                        modifier = Modifier.padding(innerPadding)
-                    )
-                }
+                MainScreen()
             }
         }
+    }
+}
+
+@Composable
+fun MainScreen() {
+    val navController = rememberNavController()
+    Scaffold(modifier = Modifier.fillMaxSize()) { innerPadding ->
+        NavGraph(
+            navController = navController,
+            modifier = Modifier.padding(innerPadding)
+        )
+    }
+}
+
+@Preview(showBackground = true)
+@Composable
+fun MainScreenPreview() {
+    ChitChatTheme {
+        MainScreen()
     }
 }
